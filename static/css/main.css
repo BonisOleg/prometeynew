@@ -58,11 +58,20 @@ body {
     top: 0;
     left: 0;
     right: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    z-index: 1000;
+    border-bottom: none;
+    transition: all 0.3s ease;
+}
+
+.main-navigation.scrolled {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    z-index: 1000;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
@@ -72,14 +81,25 @@ body {
     padding: 1rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    transition: padding 0.3s ease;
+}
+
+.main-navigation.scrolled .nav-container {
+    padding: 0.75rem 2rem;
 }
 
 .logo {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #2c3e50;
+    color: #ffffff;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.main-navigation.scrolled .logo {
+    color: #2c3e50;
+    text-shadow: none;
 }
 
 .logo:hover {
@@ -94,12 +114,17 @@ body {
 
 .nav-link {
     text-decoration: none;
-    color: #333;
+    color: #ffffff;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     position: relative;
     outline: none !important;
-    /* ВИДАЛЯЄМО синю рамочку */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.main-navigation.scrolled .nav-link {
+    color: #333;
+    text-shadow: none;
 }
 
 .nav-link::after {
@@ -123,12 +148,10 @@ body {
 
 .nav-link:focus {
     outline: none !important;
-    /* ВИДАЛЯЄМО рамочку при фокусі */
 }
 
 .nav-link:active {
     outline: none !important;
-    /* ВИДАЛЯЄМО рамочку при кліку */
 }
 
 /* Мобільне меню */
@@ -144,15 +167,149 @@ body {
 .mobile-menu-toggle span {
     width: 25px;
     height: 3px;
-    background: #333;
+    background: #ffffff;
     margin: 3px 0;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+}
+
+.main-navigation.scrolled .mobile-menu-toggle span {
+    background: #333;
 }
 
 /* Основний контент */
 .main-content {
-    /* Видаляємо margin-top для sticky scroll ефекту */
     margin-top: 0;
+}
+
+/* Повноекранні секції */
+.page-container {
+    position: relative;
+}
+
+.page-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.page-section:first-child {
+    height: 100vh;
+}
+
+.section-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.section-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 2rem 0;
+}
+
+.section-shadow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));
+    z-index: 2;
+}
+
+/* Hero блок */
+.hero-block {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-description {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Content блок */
+.content-block {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.content-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.content-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.content-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+.content-body {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* Features блок */
+.features-block {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.features-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.features-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.features-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    opacity: 0.8;
+}
+
+.features-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
 /* Типографія */

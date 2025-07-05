@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
         setupPreloader();
         setupPerformanceOptimization();
         setupAccessibility();
+        setupScrollNavigation();
+        setupViewportFix();
 
         // Відмічаємо що сторінка завантажилась
         setTimeout(() => {
@@ -98,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 clearTimeout(timeout);
                 timeout = setTimeout(later, wait);
             };
-        }
+        };
 
         // Експортуємо функції для використання в інших скриптах
         window.utils = {
@@ -146,6 +148,48 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         }
+    }
+
+    // Навігація при скролі
+    function setupScrollNavigation() {
+        const navigation = document.querySelector('.main-navigation');
+        let isScrolled = false;
+
+        function handleScroll() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const shouldBeScrolled = scrollTop > 50;
+
+            if (shouldBeScrolled && !isScrolled) {
+                navigation.classList.add('scrolled');
+                isScrolled = true;
+            } else if (!shouldBeScrolled && isScrolled) {
+                navigation.classList.remove('scrolled');
+                isScrolled = false;
+            }
+        }
+
+        // Використовуємо throttle для оптимізації
+        const throttledHandleScroll = window.utils ? window.utils.throttle(handleScroll, 16) : handleScroll;
+
+        window.addEventListener('scroll', throttledHandleScroll);
+
+        // Перевіряємо початкову позицію
+        handleScroll();
+    }
+
+    // Фікс для iOS Safari viewport
+    function setupViewportFix() {
+        function setViewportHeight() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+
+        setViewportHeight();
+
+        window.addEventListener('resize', setViewportHeight);
+        window.addEventListener('orientationchange', () => {
+            setTimeout(setViewportHeight, 100);
+        });
     }
 
     // Утиліти для роботи з localStorage
