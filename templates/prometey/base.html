@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page_meta %}{{ page_meta.title }}{% else %}Prometey{% endif %}</title>
+    {% if page_meta %}
+    <meta name="description" content="{{ page_meta.description }}">
+    <meta name="keywords" content="{{ page_meta.keywords }}">
+    {% endif %}
+
+    <!-- Preload критичних ресурсів -->
+    <link rel="preload" href="{% static 'css/main.css' %}" as="style">
+    <link rel="preload" href="{% static 'js/main.js' %}" as="script">
+
+    <!-- Стилі -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sticky-scroll.css' %}">
+    <link rel="stylesheet" href="{% static 'css/transitions.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+
+    <!-- iOS Safari специфічні мета-теги -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- Viewport для кращої адаптивності -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+</head>
+
+<body>
+    <!-- Навігаційне меню -->
+    <nav class="main-navigation">
+        <div class="nav-container">
+            <a href="{% url 'prometey:home' %}" class="logo">
+                <span>Prometey</span>
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="{% url 'prometey:home' %}" class="nav-link">Головна</a></li>
+                <li><a href="{% url 'prometey:portfolio' %}" class="nav-link">Портфоліо</a></li>
+                <li><a href="{% url 'prometey:prices' %}" class="nav-link">Ціни</a></li>
+                <li><a href="{% url 'prometey:education' %}" class="nav-link">Навчання</a></li>
+                <li><a href="{% url 'prometey:faq' %}" class="nav-link">FAQ</a></li>
+                <li><a href="{% url 'prometey:blog' %}" class="nav-link">Блог</a></li>
+                <li><a href="{% url 'prometey:contacts' %}" class="nav-link">Контакти</a></li>
+            </ul>
+
+            <!-- Мобільне меню -->
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Основний контент -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Overlay для переходів між сторінками -->
+    <div class="page-overlay">
+        <div class="loading-indicator">
+            <div class="loading-spinner"></div>
+            <p>Завантаження...</p>
+        </div>
+    </div>
+
+    <!-- Скрипти -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/sticky-scroll.js' %}"></script>
+    <script src="{% static 'js/page-transitions.js' %}"></script>
+    <script src="{% static 'js/mobile-menu.js' %}"></script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>

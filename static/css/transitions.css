@@ -1,0 +1,173 @@
+/* Слайд переходи між сторінками */
+.page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%);
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.page-overlay.active {
+    transform: translateX(0);
+}
+
+.page-overlay.fade-out {
+    transform: translateX(-100%);
+}
+
+/* Індикатор завантаження */
+.loading-indicator {
+    text-align: center;
+    color: white;
+}
+
+.loading-indicator p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* Спінер завантаження */
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Анімація для контенту при завантаженні */
+body.page-loading {
+    overflow: hidden;
+}
+
+body.page-loading .main-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+body.page-loaded .main-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Стилі для плавних переходів */
+.nav-link {
+    transition: color 0.3s ease;
+}
+
+.nav-link.loading {
+    color: #3498db;
+    pointer-events: none;
+}
+
+/* Анімації для мобільних пристроїв */
+@media (max-width: 768px) {
+    .page-overlay {
+        transform: translateY(100%);
+    }
+
+    .page-overlay.active {
+        transform: translateY(0);
+    }
+
+    .page-overlay.fade-out {
+        transform: translateY(-100%);
+    }
+}
+
+/* Покращена плавність для iOS Safari */
+@supports (-webkit-overflow-scrolling: touch) {
+    .page-overlay {
+        -webkit-transform: translateX(100%);
+        -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .page-overlay.active {
+        -webkit-transform: translateX(0);
+    }
+
+    .page-overlay.fade-out {
+        -webkit-transform: translateX(-100%);
+    }
+}
+
+/* Прелоадер для картинок */
+.image-preloader {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Анімація появи елементів */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.fade-in.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.fade-in.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.fade-in.delay-3 {
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стилі для prefetch посилань */
+link[rel="prefetch"] {
+    display: none;
+}
+
+/* Оптимізація для GPU */
+.page-overlay,
+.loading-spinner,
+.main-content {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+}

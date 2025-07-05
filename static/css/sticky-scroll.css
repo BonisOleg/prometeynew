@@ -1,0 +1,270 @@
+/* STICKY SCROLL ЕФЕКТ - КОЖЕН НАСТУПНИЙ БЛОК ПЕРЕКРИВАЄ ПОПЕРЕДНІЙ */
+
+/* Контейнер для всіх секцій */
+.page-container {
+    position: relative;
+}
+
+/* Кожна секція */
+.page-section {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* Z-INDEX: перший найнижче, кожен наступний вище */
+.page-section:nth-child(1) {
+    z-index: 1;
+    padding-top: 80px;
+}
+
+.page-section:nth-child(2) {
+    z-index: 2;
+}
+
+.page-section:nth-child(3) {
+    z-index: 3;
+}
+
+.page-section:nth-child(4) {
+    z-index: 4;
+}
+
+.page-section:nth-child(5) {
+    z-index: 5;
+}
+
+.page-section:nth-child(6) {
+    z-index: 6;
+}
+
+.page-section:nth-child(7) {
+    z-index: 7;
+}
+
+.page-section:nth-child(8) {
+    z-index: 8;
+}
+
+.page-section:nth-child(9) {
+    z-index: 9;
+}
+
+.page-section:nth-child(10) {
+    z-index: 10;
+}
+
+/* Фон секції */
+.section-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Контент секції */
+.section-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+/* Тінь для перекриття */
+.section-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.05);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.page-section:hover .section-shadow {
+    opacity: 1;
+}
+
+/* Округлені кути для наступних секцій */
+.page-section:not(:first-child) .section-background {
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Блоки контенту */
+.hero-block {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+    color: var(--text-color, #333);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    margin-bottom: 2rem;
+    color: var(--text-color, #666);
+    font-weight: 400;
+}
+
+.hero-description {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-color, #555);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.content-block {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.content-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+    color: var(--text-color, #333);
+    font-weight: 600;
+}
+
+.content-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    margin-bottom: 2rem;
+    color: var(--text-color, #666);
+}
+
+.content-body {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    color: var(--text-color, #555);
+    line-height: 1.8;
+    text-align: left;
+}
+
+.features-block {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.features-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+    color: var(--text-color, #333);
+    font-weight: 600;
+}
+
+.features-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    margin-bottom: 2rem;
+    color: var(--text-color, #666);
+}
+
+.features-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.testimonials-block {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.testimonials-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+    color: var(--text-color, #333);
+    font-weight: 600;
+}
+
+.testimonials-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    margin-bottom: 2rem;
+    color: var(--text-color, #666);
+}
+
+.testimonials-content {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    color: var(--text-color, #555);
+    line-height: 1.8;
+}
+
+.cta-block {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cta-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+    color: var(--text-color, #333);
+    font-weight: 600;
+}
+
+.cta-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    margin-bottom: 2rem;
+    color: var(--text-color, #666);
+}
+
+.cta-description {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    color: var(--text-color, #555);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.section-content {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-background {
+    transition: all 0.3s ease;
+}
+
+.page-section:hover .section-background {
+    transform: scale(1.02);
+}
+
+/* Плавна прокрутка */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Адаптивність для мобільних */
+.page-section {
+    min-height: 100vh;
+}

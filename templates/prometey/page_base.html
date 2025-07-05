@@ -1,0 +1,84 @@
+{% extends 'prometey/base.html' %}
+
+{% block content %}
+<div class="page-container">
+    {% for block in blocks %}
+    <section class="page-section" data-section-id="{{ block.id }}"
+        style="--bg-color: {{ block.background_color }}; --text-color: {{ block.text_color }};">
+
+        <!-- Фон секції -->
+        <div class="section-background" style="background-color: {{ block.background_color }};"></div>
+
+        <!-- Контент секції -->
+        <div class="section-content">
+            <div class="container">
+                {% if block.block_type == 'hero' %}
+                <div class="hero-block">
+                    <div class="hero-content">
+                        <h1 class="hero-title">{{ block.title }}</h1>
+                        {% if block.subtitle %}
+                        <p class="hero-subtitle">{{ block.subtitle }}</p>
+                        {% endif %}
+                        <div class="hero-description">
+                            {{ block.content|linebreaks }}
+                        </div>
+                    </div>
+                </div>
+                {% elif block.block_type == 'content' %}
+                <div class="content-block">
+                    <div class="content-header">
+                        <h2 class="content-title">{{ block.title }}</h2>
+                        {% if block.subtitle %}
+                        <p class="content-subtitle">{{ block.subtitle }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="content-body">
+                        {{ block.content|linebreaks }}
+                    </div>
+                </div>
+                {% elif block.block_type == 'features' %}
+                <div class="features-block">
+                    <div class="features-header">
+                        <h2 class="features-title">{{ block.title }}</h2>
+                        {% if block.subtitle %}
+                        <p class="features-subtitle">{{ block.subtitle }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="features-content">
+                        {{ block.content|linebreaks }}
+                    </div>
+                </div>
+                {% elif block.block_type == 'testimonials' %}
+                <div class="testimonials-block">
+                    <div class="testimonials-header">
+                        <h2 class="testimonials-title">{{ block.title }}</h2>
+                        {% if block.subtitle %}
+                        <p class="testimonials-subtitle">{{ block.subtitle }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="testimonials-content">
+                        {{ block.content|linebreaks }}
+                    </div>
+                </div>
+                {% elif block.block_type == 'cta' %}
+                <div class="cta-block">
+                    <div class="cta-content">
+                        <h2 class="cta-title">{{ block.title }}</h2>
+                        {% if block.subtitle %}
+                        <p class="cta-subtitle">{{ block.subtitle }}</p>
+                        {% endif %}
+                        <div class="cta-description">
+                            {{ block.content|linebreaks }}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Тінь для перекриття наступної секції -->
+        <div class="section-shadow"></div>
+    </section>
+    {% endfor %}
+</div>
+{% endblock %}
