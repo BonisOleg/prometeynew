@@ -1,13 +1,97 @@
 {% extends 'prometey/base.html' %}
+{% load static %}
 
 {% block content %}
 <div class="page-container">
     {% for block in blocks %}
-    <section class="page-section" data-section-id="{{ block.id }}"
+    <section
+        class="page-section{% if block.page == 'home' and block.order == 3 and block.block_type == 'cta' %} color-blocks-section{% endif %}"
+        data-section-id="{{ block.id }}"
         style="--bg-color: {{ block.background_color }}; --text-color: {{ block.text_color }};">
 
         <!-- Фон секції -->
-        <div class="section-background" style="background-color: {{ block.background_color }};"></div>
+        <div class="section-background" style="background-color: {{ block.background_color }};">
+            {% if block.page == 'home' and block.order == 1 and block.block_type == 'hero' %}
+            <!-- Відео фон для першого блоку головної сторінки - десктоп -->
+            <video class="section-video desktop-video" autoplay muted loop playsinline preload="metadata">
+                <source src="{% static 'video/main.mp4' %}" type="video/mp4">
+            </video>
+            <!-- Відео фон для першого блоку головної сторінки - мобільний -->
+            <video class="section-video mobile-video" autoplay muted loop playsinline preload="metadata"
+                webkit-playsinline>
+                <source src="{% static 'video/mainmobile.mp4' %}" type="video/mp4">
+            </video>
+            <!-- Блакитний фільтр поверх відео -->
+            <div class="video-overlay"></div>
+            {% elif block.page == 'portfolio' and block.order == 1 and block.block_type == 'hero' %}
+            <!-- Відео фон для першого блоку портфоліо - десктоп -->
+            <video class="section-video desktop-video" autoplay muted loop playsinline preload="metadata">
+                <source src="{% static 'video/portfolio.mp4' %}" type="video/mp4">
+            </video>
+            <!-- Відео фон для першого блоку портфоліо - мобільний -->
+            <video class="section-video mobile-video" autoplay muted loop playsinline preload="metadata"
+                webkit-playsinline>
+                <source src="{% static 'video/portfoliomobile.mp4' %}" type="video/mp4">
+            </video>
+            <!-- Блакитний фільтр поверх відео -->
+            <div class="video-overlay"></div>
+            {% elif block.page == 'prices' and block.order == 1 and block.block_type == 'hero' %}
+            <!-- Відео фон для першого блоку ціни - десктоп -->
+            <video class="section-video desktop-video" autoplay muted loop playsinline preload="metadata">
+                <source src="{% static 'video/price.mp4' %}" type="video/mp4">
+            </video>
+            <!-- Відео фон для першого блоку ціни - мобільний -->
+            <video class="section-video mobile-video" autoplay muted loop playsinline preload="metadata">
+                <source src="{% static 'video/pricemobile.mp4' %}" type="video/mp4">
+            </video>
+            <!-- Блакитний фільтр поверх відео -->
+            <div class="video-overlay"></div>
+            {% elif block.page == 'education' and block.order == 1 and block.block_type == 'hero' %}
+            <!-- Відео фон для першого блоку навчання - десктоп -->
+            <video class="section-video desktop-video" autoplay muted loop playsinline preload="metadata">
+                <source src="{% static 'video/study.mp4' %}" type="video/mp4">
+            </video>
+            <!-- Відео фон для першого блоку навчання - мобільний -->
+            <video class="section-video mobile-video" autoplay muted loop playsinline preload="metadata">
+                <source src="{% static 'video/studymobile.mp4' %}" type="video/mp4">
+            </video>
+            <!-- Блакитний фільтр поверх відео -->
+            <div class="video-overlay"></div>
+            {% elif block.page == 'blog' and block.order == 1 and block.block_type == 'hero' %}
+            <!-- Відео фон для першого блоку блогу - десктоп -->
+            <video class="section-video desktop-video" autoplay muted loop playsinline preload="metadata">
+                <source src="{% static 'video/blog.mp4' %}" type="video/mp4">
+            </video>
+            <!-- Відео фон для першого блоку блогу - мобільний -->
+            <video class="section-video mobile-video" autoplay muted loop playsinline preload="metadata">
+                <source src="{% static 'video/blogmobile.mp4' %}" type="video/mp4">
+            </video>
+            <!-- Блакитний фільтр поверх відео -->
+            <div class="video-overlay"></div>
+            {% elif block.page == 'faq' and block.order == 1 and block.block_type == 'hero' %}
+            <!-- Відео фон для першого блоку FAQ - десктоп -->
+            <video class="section-video desktop-video" autoplay muted loop playsinline preload="metadata">
+                <source src="{% static 'video/faq.mp4' %}" type="video/mp4">
+            </video>
+            <!-- Відео фон для першого блоку FAQ - мобільний -->
+            <video class="section-video mobile-video" autoplay muted loop playsinline preload="metadata">
+                <source src="{% static 'video/faqmobile.mp4' %}" type="video/mp4">
+            </video>
+            <!-- Блакитний фільтр поверх відео -->
+            <div class="video-overlay"></div>
+            {% elif block.page == 'contacts' and block.order == 1 and block.block_type == 'hero' %}
+            <!-- Відео фон для першого блоку контактів - десктоп -->
+            <video class="section-video desktop-video" autoplay muted loop playsinline preload="metadata">
+                <source src="{% static 'video/contacts.mp4' %}" type="video/mp4">
+            </video>
+            <!-- Відео фон для першого блоку контактів - мобільний -->
+            <video class="section-video mobile-video" autoplay muted loop playsinline preload="metadata">
+                <source src="{% static 'video/contactsmobile.mp4' %}" type="video/mp4">
+            </video>
+            <!-- Блакитний фільтр поверх відео -->
+            <div class="video-overlay"></div>
+            {% endif %}
+        </div>
 
         <!-- Контент секції -->
         <div class="section-content">
@@ -62,6 +146,17 @@
                 </div>
                 {% elif block.block_type == 'cta' %}
                 <div class="cta-block">
+                    {% if block.page == 'home' and block.order == 3 %}
+                    <!-- Спеціальний макет для третього блоку головної сторінки -->
+                    <div class="wrapper">
+                        <div class="left"></div>
+                        <div class="right">
+                            <div class="right-top"></div>
+                            <div class="right-bottom"></div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <!-- Звичайний макет для інших CTA блоків -->
                     <div class="cta-content">
                         <h2 class="cta-title">{{ block.title }}</h2>
                         {% if block.subtitle %}
@@ -71,6 +166,7 @@
                             {{ block.content|linebreaks }}
                         </div>
                     </div>
+                    {% endif %}
                 </div>
                 {% endif %}
             </div>
