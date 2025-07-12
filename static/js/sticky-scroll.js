@@ -163,40 +163,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Утиліти для scroll
-    const scrollUtils = {
-        // Плавний скрол до елемента
+    // Експорт утиліт для sticky scroll
+    window.stickyScrollUtils = {
         scrollToElement: function (element, offset = 0) {
             if (!element) return;
-
             const elementTop = element.offsetTop - offset;
-            window.scrollTo({
-                top: elementTop,
-                behavior: 'smooth'
-            });
-        },
-
-        // Отримання поточної позиції скролу
-        getScrollPosition: function () {
-            return window.pageYOffset || document.documentElement.scrollTop;
-        },
-
-        // Перевірка чи елемент у viewport
-        isInViewport: function (element) {
-            const rect = element.getBoundingClientRect();
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        },
-
-        // Відсоток прокрутки сторінки
-        getScrollPercentage: function () {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            return (scrollTop / docHeight) * 100;
+            window.scrollTo({ top: elementTop, behavior: 'smooth' });
         }
     };
 

@@ -12,24 +12,13 @@ document.addEventListener('DOMContentLoaded', function () {
 function initVideoOptimization(video) {
     const isMobile = window.innerWidth <= 768;
 
-    // Перевірка підтримки відео та продуктивності пристрою
+    // Спрощена перевірка завантаження відео
     function shouldLoadVideo() {
-        // Перевірка на дуже слабкий пристрій
-        if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 2) return false;
-
-        // Перевірка на дуже повільне з'єднання
-        if (navigator.connection) {
-            const connection = navigator.connection;
-            if (connection.effectiveType === 'slow-2g') {
-                return false;
-            }
-
-            // Перевірка на обмежений трафік
-            if (connection.saveData) return false;
-        }
-
         // Перевірка на зменшену анімацію
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+        
+        // Перевірка на обмежений трафік
+        if (navigator.connection && navigator.connection.saveData) return false;
 
         return true;
     }
@@ -124,35 +113,3 @@ function initVideoOptimization(video) {
     lazyLoadVideo();
 }
 
-// Preload критичних ресурсів
-document.addEventListener('DOMContentLoaded', function () {
-    // Визначаємо яке відео потрібно завантажити на основі поточної сторінки
-    const currentPath = window.location.pathname;
-    const isMobile = window.innerWidth <= 768;
-    let videoSrc = '';
-
-    if (currentPath === '/' || currentPath === '/home/') {
-        videoSrc = isMobile ? '/static/video/mainmobile.mp4' : '/static/video/main.mp4';
-    } else if (currentPath === '/portfolio/') {
-        videoSrc = isMobile ? '/static/video/portfoliomobile.mp4' : '/static/video/portfolio.mp4';
-    } else if (currentPath === '/prices/') {
-        videoSrc = isMobile ? '/static/video/pricemobile.mp4' : '/static/video/price.mp4';
-    } else if (currentPath === '/education/') {
-        videoSrc = isMobile ? '/static/video/studymobile.mp4' : '/static/video/study.mp4';
-    } else if (currentPath === '/blog/') {
-        videoSrc = isMobile ? '/static/video/blogmobile.mp4' : '/static/video/blog.mp4';
-    } else if (currentPath === '/faq/') {
-        videoSrc = isMobile ? '/static/video/faqmobile.mp4' : '/static/video/faq.mp4';
-    } else if (currentPath === '/contacts/') {
-        videoSrc = isMobile ? '/static/video/contactsmobile.mp4' : '/static/video/contacts.mp4';
-    }
-
-    if (videoSrc) {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'video';
-        link.href = videoSrc;
-        link.type = 'video/mp4';
-        document.head.appendChild(link);
-    }
-}); 

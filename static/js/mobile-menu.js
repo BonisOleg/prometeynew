@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
         setupMenuToggle();
         setupMenuLinks();
         setupOutsideClick();
-        setupSwipeGestures();
         setupKeyboardNavigation();
     }
 
@@ -106,34 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Обробка swipe жестів для закриття меню
-    function setupSwipeGestures() {
-        if (!('ontouchstart' in window)) return;
 
-        const navMenu = document.querySelector('.nav-menu');
-        let touchStartX = 0;
-        let touchStartY = 0;
-        let touchEndX = 0;
-        let touchEndY = 0;
-
-        navMenu.addEventListener('touchstart', function (e) {
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
-        });
-
-        navMenu.addEventListener('touchend', function (e) {
-            touchEndX = e.changedTouches[0].clientX;
-            touchEndY = e.changedTouches[0].clientY;
-
-            const deltaX = touchEndX - touchStartX;
-            const deltaY = touchEndY - touchStartY;
-
-            // Swipe left для закриття меню
-            if (deltaX < -50 && Math.abs(deltaY) < 50) {
-                window.closeMobileMenu();
-            }
-        });
-    }
 
     // Клавіатурна навігація
     function setupKeyboardNavigation() {

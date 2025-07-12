@@ -179,25 +179,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Обробка помилок завантаження
     function handleLoadError() {
-        const overlay = document.querySelector('.page-overlay');
-        const body = document.body;
-
-        // Показуємо повідомлення про помилку
-        const errorMessage = document.createElement('div');
-        errorMessage.innerHTML = `
-            <div style="text-align: center; color: white;">
-                <h3>Помилка завантаження</h3>
-                <p>Спробуйте оновити сторінку або перейдіть пізніше</p>
-                <button onclick="window.location.reload()" style="background: white; color: #333; border: none; padding: 10px 20px; border-radius: 5px; margin-top: 10px;">Оновити сторінку</button>
-            </div>
-        `;
-
-        const loadingIndicator = overlay.querySelector('.loading-indicator');
-        if (loadingIndicator) {
-            loadingIndicator.innerHTML = errorMessage.innerHTML;
-        }
-
-        // Приховуємо overlay через 5 секунд
+        console.error('Помилка завантаження сторінки');
+        // Просто перенаправляємо на сторінку при помилці
         setTimeout(() => {
             overlay.classList.add('fade-out');
             body.classList.remove('page-loading');
