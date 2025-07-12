@@ -56,20 +56,15 @@
     }
 }
 
-/* Анімація для контенту при завантаженні */
+/* ВИДАЛЕНО: Анімації контенту що викликають блимання */
 body.page-loading {
     overflow: hidden;
 }
 
-body.page-loading .main-content {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-body.page-loaded .main-content {
+/* ВИДАЛЕНО: Всі fade-in анімації заголовків */
+.main-content {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
 }
 
 /* Стилі для плавних переходів */
@@ -132,38 +127,9 @@ body.page-loaded .main-content {
     }
 }
 
-/* Анімація появи елементів */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 0.8s ease-out forwards;
-}
-
-.fade-in.delay-1 {
-    animation-delay: 0.1s;
-}
-
-.fade-in.delay-2 {
-    animation-delay: 0.2s;
-}
-
-.fade-in.delay-3 {
-    animation-delay: 0.3s;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-
 /* Оптимізація для GPU */
 .page-overlay,
-.loading-spinner,
-.main-content {
+.loading-spinner {
     transform: translateZ(0);
     will-change: transform;
     backface-visibility: hidden;

@@ -32,7 +32,8 @@
         <!-- Контент секції -->
         <div class="section-content">
             <div class="container">
-                {% if block.block_type == 'hero' %}
+                {% if block.block_type == 'hero' and block.order == 1 %}
+                <!-- Перший блок Hero з H1 заголовком -->
                 <div class="hero-block">
                     <div class="hero-content">
                         <h1 class="hero-title">{{ block.title }}</h1>
@@ -44,10 +45,31 @@
                         </div>
                     </div>
                 </div>
+                {% elif block.block_type == 'hero' and block.order != 1 %}
+                <!-- Інші Hero блоки з H2 заголовком -->
+                <div class="hero-block">
+                    <div class="hero-content">
+                        <h2 class="hero-title">{{ block.title }}</h2>
+                        {% if block.subtitle %}
+                        <p class="hero-subtitle">{{ block.subtitle }}</p>
+                        {% endif %}
+                        <div class="hero-description">
+                            {{ block.content|linebreaks }}
+                        </div>
+                    </div>
+                </div>
                 {% elif block.block_type == 'content' %}
                 <div class="content-block">
                     <div class="content-header">
+                        {% if block.order == 2 %}
                         <h2 class="content-title">{{ block.title }}</h2>
+                        {% elif block.order == 3 %}
+                        <h3 class="content-title">{{ block.title }}</h3>
+                        {% elif block.order == 4 %}
+                        <h4 class="content-title">{{ block.title }}</h4>
+                        {% else %}
+                        <h3 class="content-title">{{ block.title }}</h3>
+                        {% endif %}
                         {% if block.subtitle %}
                         <p class="content-subtitle">{{ block.subtitle }}</p>
                         {% endif %}
@@ -59,7 +81,13 @@
                 {% elif block.block_type == 'features' %}
                 <div class="features-block">
                     <div class="features-header">
+                        {% if block.order == 2 %}
                         <h2 class="features-title">{{ block.title }}</h2>
+                        {% elif block.order == 3 %}
+                        <h3 class="features-title">{{ block.title }}</h3>
+                        {% else %}
+                        <h2 class="features-title">{{ block.title }}</h2>
+                        {% endif %}
                         {% if block.subtitle %}
                         <p class="features-subtitle">{{ block.subtitle }}</p>
                         {% endif %}
@@ -71,7 +99,13 @@
                 {% elif block.block_type == 'testimonials' %}
                 <div class="testimonials-block">
                     <div class="testimonials-header">
+                        {% if block.order == 2 %}
                         <h2 class="testimonials-title">{{ block.title }}</h2>
+                        {% elif block.order == 3 %}
+                        <h3 class="testimonials-title">{{ block.title }}</h3>
+                        {% else %}
+                        <h2 class="testimonials-title">{{ block.title }}</h2>
+                        {% endif %}
                         {% if block.subtitle %}
                         <p class="testimonials-subtitle">{{ block.subtitle }}</p>
                         {% endif %}
@@ -85,7 +119,17 @@
                     {% if block.page == 'home' and block.order == 3 %}
                     <!-- Спеціальний макет для третього блоку головної сторінки -->
                     <div class="wrapper">
-                        <div class="left"></div>
+                        <div class="left">
+                            <div class="cta-content">
+                                <h3 class="cta-title">{{ block.title }}</h3>
+                                {% if block.subtitle %}
+                                <p class="cta-subtitle">{{ block.subtitle }}</p>
+                                {% endif %}
+                                <div class="cta-description">
+                                    {{ block.content|linebreaks }}
+                                </div>
+                            </div>
+                        </div>
                         <div class="right">
                             <div class="right-top"></div>
                             <div class="right-bottom"></div>
@@ -94,7 +138,15 @@
                     {% else %}
                     <!-- Звичайний макет для інших CTA блоків -->
                     <div class="cta-content">
+                        {% if block.order == 2 %}
                         <h2 class="cta-title">{{ block.title }}</h2>
+                        {% elif block.order == 3 %}
+                        <h3 class="cta-title">{{ block.title }}</h3>
+                        {% elif block.order == 4 %}
+                        <h4 class="cta-title">{{ block.title }}</h4>
+                        {% else %}
+                        <h3 class="cta-title">{{ block.title }}</h3>
+                        {% endif %}
                         {% if block.subtitle %}
                         <p class="cta-subtitle">{{ block.subtitle }}</p>
                         {% endif %}

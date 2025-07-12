@@ -139,8 +139,6 @@ body {
     color: #3498db;
 }
 
-
-
 /* Мобільне меню */
 .mobile-menu-toggle {
     display: none;
@@ -275,8 +273,7 @@ body {
     z-index: 1;
 }
 
-
-
+/* Заголовки Hero - однаковий розмір для H1 і H2 */
 .hero-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
@@ -308,6 +305,7 @@ body {
     margin-bottom: 3rem;
 }
 
+/* Заголовки Content - однаковий розмір для H2, H3, H4 */
 .content-title {
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 600;
@@ -338,6 +336,7 @@ body {
     margin-bottom: 3rem;
 }
 
+/* Заголовки Features - однаковий розмір для H2, H3 */
 .features-title {
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 600;
@@ -356,7 +355,66 @@ body {
     margin-top: 2rem;
 }
 
-/* Типографія */
+/* Testimonials блок */
+.testimonials-block {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.testimonials-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Заголовки Testimonials - однаковий розмір для H2, H3 */
+.testimonials-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.testimonials-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    opacity: 0.8;
+}
+
+.testimonials-content {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* CTA блок */
+.cta-block {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.cta-content {
+    text-align: center;
+}
+
+/* Заголовки CTA - однаковий розмір для H2, H3, H4 */
+.cta-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.cta-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+.cta-description {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: 1.8;
+}
+
+/* Типографія - базові стилі для всіх заголовків */
 h1,
 h2,
 h3,
@@ -368,16 +426,14 @@ h6 {
     margin-bottom: 1rem;
 }
 
-h1 {
-    font-size: 2.5rem;
-}
-
-h2 {
-    font-size: 2rem;
-}
-
-h3 {
-    font-size: 1.5rem;
+/* Скидання розмірів заголовків - використовуємо класи для стилізації */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
 }
 
 p {
@@ -436,6 +492,10 @@ p {
     width: 50%;
     background-color: lightgreen;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
 }
 
 .color-blocks-section .right {
@@ -471,4 +531,22 @@ p {
     z-index: 1;
     padding: 0;
     margin: 0;
+}
+
+/* Стилізація контенту в лівій частині третього блоку */
+.color-blocks-section .left .cta-content {
+    color: #2c3e50;
+    text-align: center;
+}
+
+.color-blocks-section .left .cta-title {
+    color: #2c3e50;
+}
+
+.color-blocks-section .left .cta-subtitle {
+    color: #34495e;
+}
+
+.color-blocks-section .left .cta-description {
+    color: #2c3e50;
 }
