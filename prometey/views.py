@@ -3,8 +3,8 @@ from django.views.generic import TemplateView
 from .models import PageBlock, PageMeta
 
 
-class BasePageView(TemplateView):
-    """Базовий клас для всіх сторінок"""
+class PageView(TemplateView):
+    """Базовий клас для всіх сторінок з автоматичним визначенням page_name"""
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -26,40 +26,41 @@ class BasePageView(TemplateView):
         return context
     
     def get_page_name(self):
-        """Метод для отримання назви сторінки"""
-        return getattr(self, 'page_name', 'home')
+        """Автоматично визначає назву сторінки з назви класу"""
+        class_name = self.__class__.__name__.lower()
+        if class_name.endswith('view'):
+            return class_name[:-4]  # Видаляємо 'view' з кінця
+        return class_name
+    
+    def get_template_names(self):
+        """Автоматично визначає шаблон на основі назви сторінки"""
+        return [f'prometey/{self.get_page_name()}.html']
 
 
-class HomeView(BasePageView):
-    template_name = 'prometey/home.html'
-    page_name = 'home'
+# Всі view класи тепер стають дуже простими
+class HomeView(PageView):
+    pass
 
 
-class PortfolioView(BasePageView):
-    template_name = 'prometey/portfolio.html'
-    page_name = 'portfolio'
+class PortfolioView(PageView):
+    pass
 
 
-class PricesView(BasePageView):
-    template_name = 'prometey/prices.html'
-    page_name = 'prices'
+class PricesView(PageView):
+    pass
 
 
-class EducationView(BasePageView):
-    template_name = 'prometey/education.html'
-    page_name = 'education'
+class EducationView(PageView):
+    pass
 
 
-class FAQView(BasePageView):
-    template_name = 'prometey/faq.html'
-    page_name = 'faq'
+class FAQView(PageView):
+    pass
 
 
-class BlogView(BasePageView):
-    template_name = 'prometey/blog.html'
-    page_name = 'blog'
+class BlogView(PageView):
+    pass
 
 
-class ContactsView(BasePageView):
-    template_name = 'prometey/contacts.html'
-    page_name = 'contacts'
+class ContactsView(PageView):
+    pass

@@ -1,27 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from .constants import PAGE_CHOICES, BLOCK_TYPES, DEFAULT_BACKGROUND_COLOR, DEFAULT_TEXT_COLOR
 
 
 class PageBlock(models.Model):
     """Модель для блоків сторінок"""
-    
-    PAGE_CHOICES = [
-        ('home', 'Головна'),
-        ('portfolio', 'Портфоліо'),
-        ('prices', 'Ціни'),
-        ('education', 'Навчання'),
-        ('faq', 'FAQ'),
-        ('blog', 'Блог'),
-        ('contacts', 'Контакти'),
-    ]
-    
-    BLOCK_TYPES = [
-        ('hero', 'Герой секція'),
-        ('content', 'Контент блок'),
-        ('features', 'Особливості'),
-        ('testimonials', 'Відгуки'),
-        ('cta', 'Заклик до дії'),
-    ]
     
     page = models.CharField(
         max_length=20,
@@ -52,13 +35,13 @@ class PageBlock(models.Model):
     
     background_color = models.CharField(
         max_length=7,
-        default='#ffffff',
+        default=DEFAULT_BACKGROUND_COLOR,
         verbose_name='Колір фону'
     )
     
     text_color = models.CharField(
         max_length=7,
-        default='#000000',
+        default=DEFAULT_TEXT_COLOR,
         verbose_name='Колір тексту'
     )
     
@@ -93,16 +76,6 @@ class PageBlock(models.Model):
 
 class PageMeta(models.Model):
     """Метадані для сторінок"""
-    
-    PAGE_CHOICES = [
-        ('home', 'Головна'),
-        ('portfolio', 'Портфоліо'),
-        ('prices', 'Ціни'),
-        ('education', 'Навчання'),
-        ('faq', 'FAQ'),
-        ('blog', 'Блог'),
-        ('contacts', 'Контакти'),
-    ]
     
     page = models.CharField(
         max_length=20,
