@@ -6,11 +6,11 @@
     {% for block in blocks %}
     <section
         class="page-section{% if block.page == 'home' and block.order == 3 and block.block_type == 'cta' %} color-blocks-section{% endif %}"
-        data-section-id="{{ block.id }}"
-        style="--bg-color: {{ block.background_color }}; --text-color: {{ block.text_color }};">
+        data-section-id="{{ block.id }}" data-bg-color="{{ block.background_color }}"
+        data-text-color="{{ block.text_color }}">
 
         <!-- Фон секції -->
-        <div class="section-background" style="background-color: {{ block.background_color }};">
+        <div class="section-background" data-bg-color="{{ block.background_color }}">
             {% if block.page == 'home' and block.order == 1 and block.block_type == 'hero' %}
             <!-- Відео фон для першого блоку головної сторінки - десктоп -->
             <video class="section-video desktop-video" autoplay muted loop playsinline preload="metadata">
