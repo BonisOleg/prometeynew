@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>{% if page_meta %}{{ page_meta.title }}{% else %}Prometey{% endif %}</title>
     {% if page_meta %}
     <meta name="description" content="{{ page_meta.description }}">
@@ -21,36 +21,8 @@
     <!-- Preconnect для критичних ресурсів -->
     <link rel="preconnect" href="{% static '' %}" crossorigin>
 
-    <!-- Conditional preload для відео (тільки десктоп) -->
-    <script>
-        if (window.innerWidth > 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            const currentPath = window.location.pathname;
-            let videoSrc = '';
-
-            if (currentPath === '/' || currentPath.includes('/home')) {
-                videoSrc = '{% static "video/main.mp4" %}';
-            } else if (currentPath.includes('/portfolio')) {
-                videoSrc = '{% static "video/portfolio.mp4" %}';
-            } else if (currentPath.includes('/prices')) {
-                videoSrc = '{% static "video/price.mp4" %}';
-            } else if (currentPath.includes('/education')) {
-                videoSrc = '{% static "video/study.mp4" %}';
-            } else if (currentPath.includes('/blog')) {
-                videoSrc = '{% static "video/blog.mp4" %}';
-            }
-
-            if (videoSrc) {
-                const link = document.createElement('link');
-                link.rel = 'preload';
-                link.as = 'video';
-                link.href = videoSrc;
-                link.type = 'video/mp4';
-                document.head.appendChild(link);
-            }
-        }
-    </script>
-
     <!-- Стилі -->
+    <link rel="stylesheet" href="{% static 'css/critical.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/sticky-scroll.css' %}">
     <link rel="stylesheet" href="{% static 'css/transitions.css' %}">
@@ -64,50 +36,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="format-detection" content="telephone=no">
-
-    <!-- Viewport для кращої адаптивності -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-
-    <!-- Критичні CSS для відео (inline для швидкості) -->
-    <style>
-        .section-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            pointer-events: none;
-            will-change: transform;
-            transform: translateZ(0);
-            backface-visibility: hidden
-        }
-
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(173, 216, 230, 0.6);
-            z-index: 2;
-            pointer-events: none;
-            mix-blend-mode: multiply
-        }
-
-        @media (max-width:768px) {
-            .section-video {
-                display: none
-            }
-        }
-
-        @media (prefers-reduced-motion:reduce) {
-            .section-video {
-                display: none !important
-            }
-        }
-    </style>
 </head>
 
 <body>
