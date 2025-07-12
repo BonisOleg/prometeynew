@@ -215,6 +215,23 @@
     .page-section:not(:first-child) .section-background {
         border-radius: 10px 10px 0 0;
     }
+
+    /* Додаткові стилі для малих екранів */
+    .hero-block,
+    .content-block,
+    .features-block,
+    .testimonials-block,
+    .cta-block {
+        padding: 1rem;
+    }
+
+    .content-body {
+        text-align: center;
+    }
+
+    .features-content {
+        text-align: center;
+    }
 }
 
 /* Специфічні стилі для iOS Safari */
@@ -331,25 +348,7 @@
     }
 }
 
-/* Покращена читабельність на малих екранах */
-@media (max-width: 480px) {
 
-    .hero-block,
-    .content-block,
-    .features-block,
-    .testimonials-block,
-    .cta-block {
-        padding: 1rem;
-    }
-
-    .content-body {
-        text-align: center;
-    }
-
-    .features-content {
-        text-align: center;
-    }
-}
 
 /* Стилі для touch взаємодії */
 @media (hover: none) and (pointer: coarse) {
@@ -426,53 +425,53 @@
 
 /* Адаптивні стилі для простого кольорового блоку */
 @media (max-width: 768px) {
-    .wrapper {
-        flex-direction: column !important;
+    .color-blocks-section .wrapper {
+        flex-direction: column;
     }
 
-    .left {
-        width: 100% !important;
-        height: 33.33% !important;
+    .color-blocks-section .left {
+        width: 100%;
+        height: 33.33%;
     }
 
-    .right {
-        width: 100% !important;
-        height: 66.67% !important;
+    .color-blocks-section .right {
+        width: 100%;
+        height: 66.67%;
     }
 
-    .right-top,
-    .right-bottom {
-        height: 50% !important;
-    }
-}
-
-/* Спеціальні стилі для iOS Safari */
-@supports (-webkit-appearance: none) {
-    .wrapper {
-        height: calc(var(--vh, 1vh) * 100);
+    .color-blocks-section .right-top,
+    .color-blocks-section .right-bottom {
+        height: 50%;
     }
 }
 
 /* Landscape орієнтація для кольорового блоку */
 @media (max-width: 768px) and (orientation: landscape) {
-    .wrapper {
-        height: 100vh !important;
-        flex-direction: row !important;
+    .color-blocks-section .wrapper {
+        height: 100vh;
+        flex-direction: row;
     }
 
-    .left {
-        width: 50% !important;
-        height: 100% !important;
+    .color-blocks-section .left {
+        width: 50%;
+        height: 100%;
     }
 
-    .right {
-        width: 50% !important;
-        height: 100% !important;
+    .color-blocks-section .right {
+        width: 50%;
+        height: 100%;
     }
 
-    .right-top,
-    .right-bottom {
-        height: 50% !important;
+    .color-blocks-section .right-top,
+    .color-blocks-section .right-bottom {
+        height: 50%;
+    }
+}
+
+/* Спеціальні стилі для iOS Safari */
+@supports (-webkit-appearance: none) {
+    .color-blocks-section .wrapper {
+        height: calc(var(--vh, 1vh) * 100);
     }
 }
 
