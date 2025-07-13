@@ -476,6 +476,143 @@ p {
     text-align: center;
 }
 
+/* Features блок з спеціальним макетом - розділення 80%/20% */
+.second-block-section .wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.second-block-section .left {
+    width: 80%;
+    background-color: #08263b;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.second-block-section .right {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.second-block-section .right-block {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+.second-block-section .right-text {
+    color: #000000;
+    font-size: 7rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 1.2;
+    text-shadow: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    transform: rotate(90deg);
+    transform-origin: center center;
+}
+
+/* Приховуємо фон секції для другого блоку */
+.second-block-section .section-background {
+    display: none;
+}
+
+.second-block-section {
+    background: transparent;
+}
+
+.second-block-section .section-content {
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    margin: 0;
+}
+
+/* Простий текстовий дизайн як на малюнку */
+.second-block-section .left .it-comparison {
+    display: flex;
+    gap: 4rem;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.second-block-section .new-it,
+.second-block-section .old-it {
+    flex: 1;
+}
+
+.second-block-section .new-it-title,
+.second-block-section .old-it-title {
+    font-size: 5rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.second-block-section .comparison-item {
+    display: flex;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.second-block-section .item-label {
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+    font-weight: 500;
+    color: #cccccc;
+    margin-right: 0.5rem;
+}
+
+.second-block-section .item-value {
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+    font-weight: 400;
+    color: #ffffff;
+}
+
+/* Специфічні стилі для старого IT */
+.second-block-section .old-it {
+    text-align: right;
+}
+
+.second-block-section .old-it .comparison-item {
+    flex-direction: row-reverse;
+}
+
+.second-block-section .old-it .item-label {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+.second-block-section .old-it-title {
+    margin-top: 20px;
+    text-align: right;
+}
+
 /* CTA блок з спеціальним макетом - прості кольорові блоки */
 .color-blocks-section .wrapper {
     width: 100vw;

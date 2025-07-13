@@ -5,7 +5,7 @@
 <div class="page-container">
     {% for block in blocks %}
     <section
-        class="page-section{% if block.page == 'home' and block.order == 3 and block.block_type == 'cta' %} color-blocks-section{% endif %}"
+        class="page-section{% if block.page == 'home' and block.order == 2 and block.block_type == 'features' %} second-block-section{% elif block.page == 'home' and block.order == 3 and block.block_type == 'cta' %} color-blocks-section{% endif %}"
         data-section-id="{{ block.id }}" data-bg-color="{{ block.background_color }}"
         data-text-color="{{ block.text_color }}">
 
@@ -15,13 +15,13 @@
             <!-- Відео фон для першого блоку - десктоп -->
             <video class="section-video desktop-video" autoplay muted loop playsinline preload="metadata">
                 <source
-                    src="{% static 'video/' %}{% if block.page == 'home' %}main{% elif block.page == 'education' %}study{% else %}{{ block.page }}{% endif %}.mp4"
+                    src="{% static 'video/' %}{% if block.page == 'home' %}main{% elif block.page == 'education' %}study{% elif block.page == 'prices' %}price{% else %}{{ block.page }}{% endif %}.mp4"
                     type="video/mp4">
             </video>
             <!-- Відео фон для першого блоку - мобільний -->
             <video class="section-video mobile-video" autoplay muted loop playsinline preload="metadata">
                 <source
-                    src="{% static 'video/' %}{% if block.page == 'home' %}main{% elif block.page == 'education' %}study{% else %}{{ block.page }}{% endif %}mobile.mp4"
+                    src="{% static 'video/' %}{% if block.page == 'home' %}main{% elif block.page == 'education' %}study{% elif block.page == 'prices' %}price{% else %}{{ block.page }}{% endif %}mobile.mp4"
                     type="video/mp4">
             </video>
             <!-- Блакитний фільтр поверх відео -->
@@ -80,6 +80,67 @@
                 </div>
                 {% elif block.block_type == 'features' %}
                 <div class="features-block">
+                    {% if block.page == 'home' and block.order == 2 %}
+                    <!-- Спеціальний макет для другого блоку головної сторінки -->
+                    <div class="wrapper">
+                        <div class="left">
+                            <div class="it-comparison">
+                                <div class="new-it">
+                                    <h3 class="new-it-title">НОВЕ IT</h3>
+                                    <div class="comparison-item">
+                                        <span class="item-label">• Час розробки</span>
+                                        <span class="item-value">Дні</span>
+                                    </div>
+                                    <div class="comparison-item">
+                                        <span class="item-label">• Команда</span>
+                                        <span class="item-value">Компактна</span>
+                                    </div>
+                                    <div class="comparison-item">
+                                        <span class="item-label">• Технології</span>
+                                        <span class="item-value">LLM моделі</span>
+                                    </div>
+                                    <div class="comparison-item">
+                                        <span class="item-label">• Код</span>
+                                        <span class="item-value">Чистий код</span>
+                                    </div>
+                                    <div class="comparison-item">
+                                        <span class="item-label">• Ціна</span>
+                                        <span class="item-value">$500-1000</span>
+                                    </div>
+                                </div>
+                                <div class="old-it">
+                                    <div class="comparison-item">
+                                        <span class="item-label">• Час розробки</span>
+                                        <span class="item-value">Місяці</span>
+                                    </div>
+                                    <div class="comparison-item">
+                                        <span class="item-label">• Команда</span>
+                                        <span class="item-value">Велика команда</span>
+                                    </div>
+                                    <div class="comparison-item">
+                                        <span class="item-label">• Технології</span>
+                                        <span class="item-value">Фреймворки</span>
+                                    </div>
+                                    <div class="comparison-item">
+                                        <span class="item-label">• Код</span>
+                                        <span class="item-value">Складний</span>
+                                    </div>
+                                    <div class="comparison-item">
+                                        <span class="item-label">• Ціна</span>
+                                        <span class="item-value">$2000-4000</span>
+                                    </div>
+                                    <h3 class="old-it-title">СТАРЕ IT</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="right-block">
+                                <span class="right-text">ЧОМУ МИ?</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <!-- Звичайний макет для інших Features блоків -->
                     <div class="features-header">
                         {% if block.order == 2 %}
                         <h2 class="features-title">{{ block.title }}</h2>
@@ -95,6 +156,7 @@
                     <div class="features-content">
                         {{ block.content|linebreaks }}
                     </div>
+                    {% endif %}
                 </div>
                 {% elif block.block_type == 'testimonials' %}
                 <div class="testimonials-block">

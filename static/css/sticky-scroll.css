@@ -111,3 +111,9 @@
 .page-section:hover .section-background {
     transform: scale(1.02);
 }
+
+/* Переконуємось що спеціальні блоки правильно позиціонуються */
+.second-block-section .wrapper,
+.color-blocks-section .wrapper {
+    z-index: 1;
+}
