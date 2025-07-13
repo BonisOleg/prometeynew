@@ -203,25 +203,25 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Video files (too large for GitHub)
-*.mp4
-*.mov
-*.avi
-*.mkv
-*.webm
+# IDEs
+.vscode/
+.idea/
 
-# macOS
+# OS generated files
 .DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-Thumbs.db 
+Thumbs.db
 
 # Video files
-static/video/*.mp4
-static/video/**/*.mp4
-
-# Git LFS
-.gitattributes 
+static/video/
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wmv
+*.flv
+*.webm 
