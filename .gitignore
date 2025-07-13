@@ -218,3 +218,10 @@ dmypy.json
 .Trashes
 ehthumbs.db
 Thumbs.db 
+
+# Video files
+static/video/*.mp4
+static/video/**/*.mp4
+
+# Git LFS
+.gitattributes 
