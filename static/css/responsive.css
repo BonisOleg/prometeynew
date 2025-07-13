@@ -424,49 +424,7 @@
 }
 
 /* Адаптивні стилі для простого кольорового блоку */
-@media (max-width: 768px) {
-    .color-blocks-section .wrapper {
-        flex-direction: column;
-    }
 
-    .color-blocks-section .left {
-        width: 100%;
-        height: 33.33%;
-    }
-
-    .color-blocks-section .right {
-        width: 100%;
-        height: 66.67%;
-    }
-
-    .color-blocks-section .right-top,
-    .color-blocks-section .right-bottom {
-        height: 50%;
-    }
-}
-
-/* Landscape орієнтація для кольорового блоку */
-@media (max-width: 768px) and (orientation: landscape) {
-    .color-blocks-section .wrapper {
-        height: 100vh;
-        flex-direction: row;
-    }
-
-    .color-blocks-section .left {
-        width: 50%;
-        height: 100%;
-    }
-
-    .color-blocks-section .right {
-        width: 50%;
-        height: 100%;
-    }
-
-    .color-blocks-section .right-top,
-    .color-blocks-section .right-bottom {
-        height: 50%;
-    }
-}
 
 /* Адаптивні стилі для другого блоку 80%/20% */
 @media (max-width: 768px) {
@@ -501,6 +459,13 @@
         flex-direction: column;
         gap: 3rem;
         text-align: center;
+    }
+
+    .second-block-section .prometey-logo {
+        width: 96px;
+        /* було 80px, збільшено на 20% */
+        padding: 10px;
+        /* трохи менший padding для мобільних */
     }
 
     .second-block-section .new-it-title,
@@ -647,5 +612,65 @@
 @media (prefers-reduced-motion: reduce) {
     .section-video {
         display: none !important;
+    }
+}
+
+/* Адаптивні стилі для третього блоку */
+@media (max-width: 768px) {
+    .color-blocks-section .wrapper {
+        flex-direction: column;
+    }
+
+    .color-blocks-section .left {
+        width: 100%;
+        height: 60%;
+        padding: 1.5rem;
+    }
+
+    .color-blocks-section .right {
+        width: 100%;
+        height: 40%;
+        flex-direction: row;
+    }
+
+    .color-blocks-section .right-top,
+    .color-blocks-section .right-bottom {
+        width: 50%;
+        height: 100%;
+    }
+
+    .color-blocks-section .hover-link {
+        font-size: 1.2rem;
+        padding: 0.5rem;
+    }
+}
+
+/* Landscape орієнтація для третього блоку */
+@media (max-width: 768px) and (orientation: landscape) {
+    .color-blocks-section .wrapper {
+        height: 100vh;
+        flex-direction: row;
+    }
+
+    .color-blocks-section .left {
+        width: 60%;
+        height: 100%;
+        padding: 1.5rem;
+    }
+
+    .color-blocks-section .right {
+        width: 40%;
+        height: 100%;
+        flex-direction: column;
+    }
+
+    .color-blocks-section .right-top,
+    .color-blocks-section .right-bottom {
+        width: 100%;
+        height: 50%;
+    }
+
+    .color-blocks-section .hover-link {
+        font-size: 1.1rem;
     }
 }

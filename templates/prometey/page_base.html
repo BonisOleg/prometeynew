@@ -108,6 +108,7 @@
                                         <span class="item-value">$500-1000</span>
                                     </div>
                                 </div>
+                                <img src="{% static 'images/prometey.png' %}" alt="Prometey" class="prometey-logo">
                                 <div class="old-it">
                                     <div class="comparison-item">
                                         <span class="item-label">• Час розробки</span>
@@ -191,10 +192,15 @@
                                     {{ block.content|linebreaks }}
                                 </div>
                             </div>
+                            <a href="/test/" class="hover-link">пройти короткий тест для прорахунку вашого проєкту</a>
                         </div>
                         <div class="right">
-                            <div class="right-top"></div>
-                            <div class="right-bottom"></div>
+                            <div class="right-top">
+                                <a href="/portfolio/" class="hover-link">подивитися наші проєкти</a>
+                            </div>
+                            <div class="right-bottom">
+                                <a href="/contacts/" class="hover-link">зв'язатися з нами</a>
+                            </div>
                         </div>
                     </div>
                     {% else %}
